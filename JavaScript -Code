@@ -1,0 +1,26 @@
+// Function to get unique elements from an array
+function getUniqueElements(arr) {
+  return Array.from(new Set(arr));
+}
+
+function findUniqueUsers(list1, list2) {
+  // Get unique names in List1 not in List2
+  const uniqueInList1 = list1.filter((user) => !list2.includes(user));
+
+  // Get unique names in List2 not in List1
+  const uniqueInList2 = list2.filter((user) => !list1.includes(user));
+
+  // Get names present in both List1 and List2
+  const intersection = list1.filter((user) => list2.includes(user));
+
+  return [getUniqueElements(uniqueInList1), getUniqueElements(uniqueInList2), getUniqueElements(intersection)];
+}
+
+const List1 = ['Arjun', 'Adwait', 'Swapnil', 'Amit', 'Vishal', 'Adnan'];
+const List2 = ['Adwait', 'Laxman', 'Amit', 'Adnan', 'Nitin', 'Gaurav'];
+
+const [uniqueInList1, uniqueInList2, intersection] = findUniqueUsers(List1, List2);
+
+console.log("Unique names in List1 not in List2:", uniqueInList1);
+console.log("Unique names in List2 not in List1:", uniqueInList2);
+console.log("Names present in both List1 and List2:", intersection);
